@@ -93,7 +93,7 @@ With the virtual environment activated, run the application using `uv`:
 uv run python run.py
 ```
 
-The application will be available at `http://127.0.0.1:5000`.
+The application will be available at `http://127.0.0.1:5020`.
 
 ### Using a Specific Data Provider
 
