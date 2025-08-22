@@ -1,0 +1,8 @@
+Flask
+langchain
+google-generativeai
+truedata-ws
+python-dotenv
+google-search-results
+langchain_google_genai
+langchain_community

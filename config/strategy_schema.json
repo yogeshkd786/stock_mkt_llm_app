@@ -1,0 +1,100 @@
+{
+  "strategy_library": [
+    {
+      "name": "Moving Average Crossover",
+      "type": "technical",
+      "intent": "Detect trend shifts using short vs long moving averages",
+      "inputs": {
+        "symbol": "string",
+        "short_window": "integer",
+        "long_window": "integer",
+        "price_series": "array<float>"
+      },
+      "prompt_template": "You are a technical analyst. Given the price series for {symbol}, calculate the {short_window}-period and {long_window}-period moving averages. If the short MA crosses above the long MA, suggest a BUY. If it crosses below, suggest a SELL. Return the crossover status and recommendation.",
+      "output_format": {
+        "symbol": "string",
+        "short_MA": "float",
+        "long_MA": "float",
+        "crossover": "bullish | bearish",
+        "recommendation": "BUY | SELL"
+      }
+    },
+    {
+      "name": "Value Investing Filter",
+      "type": "fundamental",
+      "intent": "Identify fundamentally undervalued stocks",
+      "inputs": {
+        "symbol": "string",
+        "PE_ratio": "float",
+        "PB_ratio": "float",
+        "ROE": "float",
+        "debt_equity": "float",
+        "sector_avg_PE": "float"
+      },
+      "prompt_template": "You are a value investor. Evaluate {symbol} based on PE, PB, ROE, and debt/equity. If PE < sector_avg_PE and ROE > 15% with low debt, recommend BUY. Otherwise, HOLD or SELL.",
+      "output_format": {
+        "symbol": "string",
+        "valuation_score": "float",
+        "recommendation": "BUY | HOLD | SELL",
+        "rationale": "string"
+      }
+    },
+    {
+      "name": "Momentum Trading",
+      "type": "technical",
+      "intent": "Detect short-term price momentum",
+      "inputs": {
+        "symbol": "string",
+        "price_series": "array<float>",
+        "volume_series": "array<float>",
+        "RSI": "float",
+        "MACD": "float"
+      },
+      "prompt_template": "You are a momentum trader. Analyze {symbol} for price acceleration, volume spikes, and RSI/MACD indicators. If momentum is strong and RSI < 70, suggest BUY. If RSI > 70 or momentum fades, suggest SELL.",
+      "output_format": {
+        "symbol": "string",
+        "momentum_score": "float",
+        "RSI": "float",
+        "MACD": "float",
+        "recommendation": "BUY | SELL | HOLD"
+      }
+    },
+    {
+      "name": "Dividend Investing",
+      "type": "fundamental",
+      "intent": "Identify income-generating stocks",
+      "inputs": {
+        "symbol": "string",
+        "dividend_yield": "float",
+        "payout_ratio": "float",
+        "cash_flow_stability": "boolean"
+      },
+      "prompt_template": "You are a dividend investor. Assess {symbol} for consistent dividend yield and payout ratio. If yield > 3% and payout < 60% with stable cash flows, recommend BUY for income portfolio.",
+      "output_format": {
+        "symbol": "string",
+        "dividend_score": "float",
+        "recommendation": "BUY | HOLD | SELL"
+      }
+    },
+    {
+      "name": "Event-Based Trading",
+      "type": "sentiment",
+      "intent": "Simulate trades around earnings, budget, or policy events",
+      "inputs": {
+        "symbol": "string",
+        "event_type": "string",
+        "pre_event_sentiment": "positive | neutral | negative",
+        "volatility_estimate": "float",
+        "news_summary": "string"
+      },
+      "prompt_template": "You are an event-driven trader. Based on the upcoming {event_type} and sentiment analysis, predict short-term impact on {symbol}. If sentiment is positive and volatility is high, suggest BUY before event. If negative, suggest SELL or HOLD.",
+      "output_format": {
+        "symbol": "string",
+        "event_type": "string",
+        "sentiment": "positive | neutral | negative",
+        "expected_move": "up | down | flat",
+        "recommendation": "BUY | SELL | HOLD"
+      }
+    }
+  ]
+}
